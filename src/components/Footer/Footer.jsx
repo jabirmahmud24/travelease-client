@@ -14,9 +14,9 @@ const Footer = () => {
           </span>
         </a>
         <p>
-          ACME Industries Ltd.
+          TRAVEL EASE Ltd.
           <br />
-          Providing reliable tech since 1992
+          Providing reliable one step vehicle solution since 2025.
         </p>
       </aside>
       <nav>
