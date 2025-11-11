@@ -127,17 +127,14 @@ const FeaturedOwners = () => {
   }
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 bg-linear-to-b from-slate-50 to-white relative overflow-hidden"
-    >
+    <section ref={sectionRef} className="py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-30 -z-0"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -z-0"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16 featured-title">
+        <div className="text-center mb-16 dark:bg-white py-4 featured-title">
           <h2
             className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
