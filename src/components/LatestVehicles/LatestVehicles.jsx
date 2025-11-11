@@ -42,23 +42,20 @@ const LatestVehicles = ({ latestVehiclePromise }) => {
   }, [vehicles]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden"
-    >
+    <section ref={sectionRef} className="py-20  relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-30 -z-0"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -z-0"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div ref={titleRef} className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16 dark:bg-white py-4">
           <h2
             className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Latest{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
               Vehicles
             </span>
           </h2>

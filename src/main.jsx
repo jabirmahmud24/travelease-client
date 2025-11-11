@@ -42,19 +42,35 @@ const router = createBrowserRouter([
       },
       {
         path: "myBookings",
-        Component: MyBookings,
+        element: (
+          <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myVehicles",
-        Component: MyVehicles,
+        element: (
+          <PrivateRoute>
+            <MyVehicles></MyVehicles>
+          </PrivateRoute>
+        ),
       },
       {
         path: "addVehicle",
-        Component: AddVehicle,
+        element: (
+          <PrivateRoute>
+            <AddVehicle></AddVehicle>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateVehicle/:id",
-        Component: UpdateVehicle,
+        element: (
+          <PrivateRoute>
+            <UpdateVehicle></UpdateVehicle>
+          </PrivateRoute>
+        ),
       },
       {
         path: "vehicleDetails/:id",
