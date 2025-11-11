@@ -37,7 +37,7 @@ const ViewDetails = () => {
         userEmail: user.email,
       };
 
-      const response = await fetch("http://localhost:3000/bookings", {
+      const response = await fetch("http://localhost:3000/myBookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

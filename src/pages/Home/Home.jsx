@@ -1,6 +1,7 @@
 import React from "react";
 import LatestVehicles from "../../components/LatestVehicles/LatestVehicles";
 import Banner from "../../components/Banner/Banner";
+import FeaturedOwners from "../../components/FeaturedOwners/FeaturedOwners";
 
 const Home = () => {
   const latestVehiclePromise = fetch(
@@ -12,6 +13,7 @@ const Home = () => {
       <LatestVehicles
         latestVehiclePromise={latestVehiclePromise}
       ></LatestVehicles>
+      <FeaturedOwners></FeaturedOwners>
     </div>
   );
 };

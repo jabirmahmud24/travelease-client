@@ -21,7 +21,7 @@ const MyBookings = () => {
     try {
       const token = await user.getIdToken();
       const response = await fetch(
-        `http://localhost:3000/my-bookings?email=${user.email}`,
+        `http://localhost:3000/myBookings?email=${user.email}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
