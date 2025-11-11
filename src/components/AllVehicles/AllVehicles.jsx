@@ -126,13 +126,10 @@ const AllVehicles = () => {
   }
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden min-h-screen"
-    >
+    <section ref={sectionRef} className="py-20 overflow-hidden min-h-screen">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-30 -z-0"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -z-0"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-30 -z-0"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96  rounded-full blur-3xl opacity-30 -z-0"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}

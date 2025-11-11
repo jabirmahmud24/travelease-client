@@ -126,7 +126,8 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* --------------- */}
         {/* Toggle Button */}
-        <div className="flex-none">
+        <div className="flex-none flex justify-center items-center border-2 px-2 rounded-2xl mr-2">
+          <h4>Theme</h4>
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the theme */}
             <input type="checkbox" onChange={handleThemeToggle} />

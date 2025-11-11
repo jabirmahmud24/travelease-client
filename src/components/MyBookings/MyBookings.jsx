@@ -111,12 +111,17 @@ const MyBookings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">My Bookings</h1>
-          <p className="text-gray-600">
+        <div className="mb-8 text-center py-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#002f6c] dark:text-[#0a68e4] mb-4">
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+              Bookings
+            </span>
+          </h2>
+          <p className="text-gray-500">
             Manage all your vehicle bookings in one place
           </p>
         </div>

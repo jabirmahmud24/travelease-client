@@ -135,19 +135,13 @@ const FeaturedOwners = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 dark:bg-white py-4 featured-title">
-          <h2
-            className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4">
             Featured{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
               Owners
             </span>
           </h2>
-          <p
-            className="text-lg text-slate-600 max-w-2xl mx-auto"
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Meet our top vehicle owners who provide exceptional service and
             maintain the largest fleets
           </p>
