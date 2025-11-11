@@ -11,28 +11,39 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
-      <li>
-        <NavLink to="/allVehicles">All Vehicles</NavLink>
-      </li>
-      {user && (
+      {user ? (
         <>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/allVehicles">All Vehicles</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addVehicle">Add Vehicle</NavLink>
+          </li>
           <li>
             <NavLink to="/myVehicles">My Vehicles</NavLink>
           </li>
-          <li>
-            <NavLink to="/addVehicle">Add Vehicles</NavLink>
-          </li>
+
           <li>
             <NavLink to="/myBookings">My Bookings</NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          {" "}
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">Register</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/allVehicles">All Vehicles</NavLink>
           </li>
         </>
       )}
@@ -80,11 +91,52 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
+      {/* <div className="navbar-end">
+        {user ? (
+          <div className="flex gap-2 justify-center items-center">
+            <div>
+              <img
+                className="rounded-full h-12 w-12 border border-amber-50"
+                src={user.photoURL}
+                alt=""
+              />
+            </div>
+            <button onClick={handleSignOut} className="btn btn-primary">
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <Link to="/register">Login</Link>
+        )}
+      </div> */}
       <div className="navbar-end">
         {user ? (
-          <a onClick={handleSignOut} className="btn btn-primary">
-            Sign Out
-          </a>
+          <div className="flex gap-2 justify-center items-center">
+            {/* wrapper uses 'group' so we can show tooltip on hover/focus */}
+            <div className="relative group inline-block">
+              <img
+                className="rounded-full h-12 w-12 border border-amber-50 cursor-pointer"
+                src={user.photoURL}
+                alt={user.displayName || "User"}
+                tabIndex={0} // makes it focusable for keyboard users
+              />
+
+              {/* tooltip: invisible by default, visible on hover or focus */}
+              <div
+                className="pointer-events-none absolute left-1/2 transform -translate-x-1/2 mt-2 w-max whitespace-nowrap
+                         rounded-md bg-white text-black text-sm font-medium shadow-md px-3 py-1
+                         opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                         group-focus:opacity-100 group-focus:visible transition-opacity duration-150"
+                role="tooltip"
+              >
+                {user.displayName}
+              </div>
+            </div>
+
+            <button onClick={handleSignOut} className="btn btn-primary">
+              Sign Out
+            </button>
+          </div>
         ) : (
           <Link to="/register">Login</Link>
         )}

@@ -17,6 +17,7 @@ import MyBookings from "./components/MyBookings/MyBookings.jsx";
 
 import MyVehicles from "./components/MyVehicles/MyVehicles.jsx";
 import AddVehicle from "./components/AddVehicle.jsx/AddVehicle.jsx";
+import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "addVehicle",
         Component: AddVehicle,
+      },
+      {
+        path: "/updateVehicle/:id",
+        Component: UpdateVehicle,
       },
       {
         path: "vehicleDetails/:id",

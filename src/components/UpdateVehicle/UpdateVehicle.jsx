@@ -1,0 +1,213 @@
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthContext";
+
+const UpdateVehicle = () => {
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const [vehicle, setVehicle] = useState(null);
+  const navigate = useNavigate();
+
+  // Fetch vehicle by ID
+  useEffect(() => {
+    fetch(`http://localhost:3000/vehicles/${id}`)
+      .then((res) => res.json())
+      .then((data) => setVehicle(data))
+      .catch((err) => console.error("Error loading vehicle:", err));
+  }, [id]);
+
+  // Handle Update Submit
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const updatedVehicle = {
+      vehicleName: form.vehicleName.value,
+      owner: form.owner.value,
+      categories: form.categories.value, // ✅ fixed
+      pricePerDay: form.pricePerDay.value,
+      location: form.location.value,
+      availability: form.availability.value,
+      description: form.description.value,
+      coverImage: form.coverImage.value,
+      userEmail: user?.email,
+    };
+
+    fetch(`http://localhost:3000/vehicles/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedVehicle),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Updated!",
+            text: "Vehicle updated successfully.",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          navigate("/myVehicles");
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "No Changes",
+            text: "No changes were made.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating vehicle:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: "Failed to update vehicle.",
+        });
+      });
+  };
+
+  if (!vehicle)
+    return (
+      <div className="text-center py-20 text-xl font-semibold">
+        Loading vehicle details...
+      </div>
+    );
+
+  return (
+    <div className="max-w-3xl mx-auto mt-10 p-6 bg-base-100 shadow-xl rounded-2xl">
+      {/* Vehicle Header */}
+      <div className="mb-6 text-center">
+        <img
+          src={vehicle.coverImage}
+          alt={vehicle.vehicleName}
+          className="w-64 h-40 object-cover mx-auto rounded-xl"
+        />
+        <h2 className="text-2xl font-bold mt-3">{vehicle.vehicleName}</h2>
+        <p className="text-sm text-gray-500">{vehicle.description}</p>
+      </div>
+
+      {/* Update Form */}
+      <form onSubmit={handleUpdate} className="grid grid-cols-2 gap-4">
+        {/* Vehicle Name */}
+        <div>
+          <label className="label">
+            <span className="label-text">Vehicle Name</span>
+          </label>
+          <input
+            name="vehicleName"
+            defaultValue={vehicle.vehicleName}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Owner */}
+        <div>
+          <label className="label">
+            <span className="label-text">Owner Name</span>
+          </label>
+          <input
+            name="owner"
+            defaultValue={vehicle.owner}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Categories Dropdown */}
+        <div>
+          <label className="label">
+            <span className="label-text">Categories</span>
+          </label>
+          <select
+            name="categories"
+            defaultValue={vehicle.categories}
+            className="select select-bordered w-full"
+          >
+            <option>Sedan</option>
+            <option>SUV</option>
+            <option>Electric</option>
+            <option>Van</option>
+          </select>
+        </div>
+
+        {/* Price */}
+        <div>
+          <label className="label">
+            <span className="label-text">Price Per Day</span>
+          </label>
+          <input
+            name="pricePerDay"
+            defaultValue={vehicle.pricePerDay}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Location */}
+        <div>
+          <label className="label">
+            <span className="label-text">Location</span>
+          </label>
+          <input
+            name="location"
+            defaultValue={vehicle.location}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Availability */}
+        <div>
+          <label className="label">
+            <span className="label-text">Availability</span>
+          </label>
+          <select
+            name="availability"
+            defaultValue={vehicle.availability}
+            className="select select-bordered w-full"
+          >
+            <option>Available</option>
+            <option>Unavailable</option>
+          </select>
+        </div>
+
+        {/* Description (full width) */}
+        <div className="col-span-2">
+          <label className="label">
+            <span className="label-text">Description</span>
+          </label>
+          <textarea
+            name="description"
+            defaultValue={vehicle.description}
+            className="textarea textarea-bordered w-full"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        {/* Cover Image URL */}
+        <div className="col-span-2">
+          <label className="label">
+            <span className="label-text">Cover Image URL</span>
+          </label>
+          <input
+            name="coverImage"
+            defaultValue={vehicle.coverImage}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button type="submit" className="btn btn-primary col-span-2 mt-4">
+          Update Vehicle
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default UpdateVehicle;

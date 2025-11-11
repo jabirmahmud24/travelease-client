@@ -1,5 +1,6 @@
 import React from "react";
 import LatestVehicles from "../../components/LatestVehicles/LatestVehicles";
+import Banner from "../../components/Banner/Banner";
 
 const Home = () => {
   const latestVehiclePromise = fetch(
@@ -7,7 +8,7 @@ const Home = () => {
   ).then((res) => res.json());
   return (
     <div>
-      <h2 className="text-6xl text-red-500">This is home 2</h2>
+      <Banner></Banner>
       <LatestVehicles
         latestVehiclePromise={latestVehiclePromise}
       ></LatestVehicles>

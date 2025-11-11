@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 
@@ -36,28 +37,14 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  // Update user profile (displayName, photoURL)
+  const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current user", currentUser);
-      //   if (currentUser) {
-      //     const loggedUser = { email: currentUser.email };
-
-      //     fetch("http://localhost:3000/getToken", {
-      //       method: "POST",
-      //       headers: {
-      //         "content-type": "application/json",
-      //       },
-      //       body: JSON.stringify(loggedUser),
-      //     })
-      //       .then((res) => res.json())
-      //       .then((data) => {
-      //         console.log("after getting token", data.token);
-      //         localStorage.setItem("token", data.token);
-      //       });
-      //   } else {
-      //     localStorage.removeItem("token");
-      //   }
       setLoading(false);
     });
 
@@ -71,9 +58,12 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     signOutUser,
+    updateUserProfile,
+    setUser,
     user,
     loading,
   };
+
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };
 

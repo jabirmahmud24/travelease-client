@@ -45,7 +45,9 @@ const Login = () => {
           onSubmit={handleLogin}
           className="shadow-md rounded-xl w-full max-w-md"
         >
-          <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+          <h2 className="text-2xl font-semibold text-center mb-6">
+            Welcome Back
+          </h2>
 
           <div className="mb-4">
             <label className="block mb-2 font-medium">Email</label>
@@ -68,6 +70,11 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </div>
+          <p className="text-sm mb-4">
+            <Link to="/forgetPassword" className="text-blue-500">
+              Forget Password?
+            </Link>
+          </p>
 
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
