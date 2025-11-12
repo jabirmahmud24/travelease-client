@@ -8,6 +8,7 @@ import {
   FaFilter,
 } from "react-icons/fa";
 import gsap from "gsap";
+import Loading from "../Loader/Loading";
 
 const AllVehicles = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -59,29 +60,6 @@ const AllVehicles = () => {
   const applyFiltersAndSort = (data, sortOption) => {
     let result = [...data];
 
-    // Apply URL search params filters (from Banner search)
-    const location = searchParams.get("location");
-    const category = searchParams.get("category");
-    const owner = searchParams.get("owner");
-
-    if (location) {
-      result = result.filter((v) =>
-        v.location.toLowerCase().includes(location.toLowerCase())
-      );
-    }
-
-    if (category) {
-      result = result.filter(
-        (v) => v.categories.toLowerCase() === category.toLowerCase()
-      );
-    }
-
-    if (owner) {
-      result = result.filter(
-        (v) => v.userEmail.toLowerCase() === owner.toLowerCase()
-      );
-    }
-
     // Apply sorting
     switch (sortOption) {
       case "price-low":
@@ -118,11 +96,7 @@ const AllVehicles = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-linear-to-b from-slate-50 to-white">
-        <span className="loading loading-spinner loading-lg text-[#0ea5e9]"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (
