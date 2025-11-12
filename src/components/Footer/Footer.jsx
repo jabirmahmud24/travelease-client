@@ -13,7 +13,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-[#002f6c] to-[#001f3f] text-white relative overflow-hidden">
+    <footer className="bg-linear-to-b from-[#002f6c] to-[#001f3f] text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
@@ -24,14 +24,14 @@ const Footer = () => {
           {/* About Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
                 <FaCar className="h-6 w-6 text-white" />
               </div>
               <span
                 className="text-2xl font-bold"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300">
                   Travel
                 </span>
                 <span className="text-white">Ease</span>
@@ -47,28 +47,28 @@ const Footer = () => {
             <div className="flex gap-3">
               <a
                 href="#"
-                className="bg-white/10 hover:bg-gradient-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
+                className="bg-white/10 hover:bg-linear-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
                 aria-label="Facebook"
               >
                 <FaFacebookF className="text-white" />
               </a>
               <a
                 href="#"
-                className="bg-white/10 hover:bg-gradient-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
+                className="bg-white/10 hover:bg-linear-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
                 aria-label="Twitter"
               >
                 <FaTwitter className="text-white" />
               </a>
               <a
                 href="#"
-                className="bg-white/10 hover:bg-gradient-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
+                className="bg-white/10 hover:bg-linear-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
                 aria-label="YouTube"
               >
                 <FaYoutube className="text-white" />
               </a>
               <a
                 href="#"
-                className="bg-white/10 hover:bg-gradient-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
+                className="bg-white/10 hover:bg-linear-to-r hover:from-[#0ea5e9] hover:to-[#14b8a6] p-3 rounded-xl transition-all duration-300 transform hover:scale-110"
                 aria-label="Instagram"
               >
                 <FaInstagram className="text-white" />
@@ -79,7 +79,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h6
-              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300"
+              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Quick Links
@@ -93,7 +93,7 @@ const Footer = () => {
                   to="/"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Home
                 </Link>
               </li>
@@ -102,7 +102,7 @@ const Footer = () => {
                   to="/allVehicles"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   All Vehicles
                 </Link>
               </li>
@@ -111,7 +111,7 @@ const Footer = () => {
                   to="/about"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   About Us
                 </Link>
               </li>
@@ -120,7 +120,7 @@ const Footer = () => {
                   to="/myVehicles"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   My Vehicles
                 </Link>
               </li>
@@ -129,7 +129,7 @@ const Footer = () => {
                   to="/addVehicle"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Add Vehicle
                 </Link>
               </li>
@@ -139,7 +139,7 @@ const Footer = () => {
           {/* Support */}
           <div>
             <h6
-              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300"
+              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Support
@@ -153,7 +153,7 @@ const Footer = () => {
                   to="/help"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Help Center
                 </Link>
               </li>
@@ -162,7 +162,7 @@ const Footer = () => {
                   to="/faq"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   FAQs
                 </Link>
               </li>
@@ -171,7 +171,7 @@ const Footer = () => {
                   to="/terms"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Terms of Service
                 </Link>
               </li>
@@ -180,7 +180,7 @@ const Footer = () => {
                   to="/privacy"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Privacy Policy
                 </Link>
               </li>
@@ -189,7 +189,7 @@ const Footer = () => {
                   to="/contact"
                   className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                 >
-                  <span className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] transition-all duration-300"></span>
                   Contact Us
                 </Link>
               </li>
@@ -199,7 +199,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h6
-              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300"
+              className="text-lg font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
               Contact Info

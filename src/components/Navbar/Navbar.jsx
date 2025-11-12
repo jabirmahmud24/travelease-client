@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import { FaCar } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -92,15 +93,20 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold flex items-center gap-1">
-          <img className="h-8 w-8" src="/logo.png" alt="Logo" />
-          <span className="bg-linear-to-r from-blue-400 to-blue-700 text-transparent bg-clip-text">
-            Travel
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <FaCar className="h-6 w-6 text-white" />
+          </div>
+          <span
+            className="text-2xl font-bold"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300">
+              Travel
+            </span>
+            <span className="text-slate-500">Ease</span>
           </span>
-          <span className="bg-linear-to-r from-blue-400 to-blue-700 text-transparent bg-clip-text">
-            Ease
-          </span>
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
