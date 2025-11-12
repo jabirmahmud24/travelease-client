@@ -216,7 +216,7 @@ const ViewDetails = () => {
             <button
               onClick={handleBookNow}
               disabled={booking || vehicle.availability !== "Available"}
-              className={`w-full py-4 px-8 rounded-lg text-white font-semibold text-lg transition duration-300 ${
+              className={`btn btn-sm bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full ${
                 vehicle.availability === "Available"
                   ? "bg-blue-600 hover:bg-blue-700 active:scale-95"
                   : "bg-gray-400 cursor-not-allowed"
