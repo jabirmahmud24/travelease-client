@@ -14,10 +14,16 @@ const UpdateVehicle = () => {
 
   // Fetch vehicle by ID
   useEffect(() => {
-    fetch(`http://localhost:3000/vehicles/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVehicle(data))
-      .catch((err) => console.error("Error loading vehicle:", err));
+    const fetchVehicle = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/vehicles/${id}`);
+        setVehicle(res.data); // Axios automatically parses JSON
+      } catch (err) {
+        console.error("Error loading vehicle:", err);
+      }
+    };
+
+    fetchVehicle();
   }, [id]);
 
   // Handle Update Submit

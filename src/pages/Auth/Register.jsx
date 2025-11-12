@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -59,16 +60,15 @@ const Register = () => {
               createdAt: new Date().toISOString(),
             };
 
-            fetch("http://localhost:3000/users", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(newUser),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log("User saved to database:", data);
+            axios
+              .post("http://localhost:3000/users", newUser, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((res) => {
+                // const data = res.data;
+                // console.log("User saved to database:", data);
                 navigate("/");
               })
               .catch((err) => {

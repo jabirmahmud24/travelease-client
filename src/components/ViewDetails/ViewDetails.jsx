@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const ViewDetails = () => {
   const vehicle = useLoaderData();
@@ -37,18 +38,20 @@ const ViewDetails = () => {
         userEmail: user.email,
       };
 
-      const response = await fetch("http://localhost:3000/myBookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(bookingData),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/myBookings",
+        bookingData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-      const data = await response.json();
+      const data = response.data;
 
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         Swal.fire({
           icon: "success",
           title: "Booking Successful!",

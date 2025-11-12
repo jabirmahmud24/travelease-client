@@ -162,7 +162,8 @@ const Login = () => {
                 </p>
               </div>
 
-              <div ref={formRef}>
+              {/* WRAPPED IN FORM TAG */}
+              <form ref={formRef} onSubmit={handleLogin}>
                 <div className="space-y-5">
                   {/* Email Input */}
                   <div className="form-control">
@@ -229,10 +230,9 @@ const Login = () => {
                     </div>
                   )}
 
-                  {/* Login Button */}
+                  {/* Login Button - REMOVED onClick, kept type="submit" */}
                   <button
                     type="submit"
-                    onClick={handleLogin}
                     className="btn btn-lg w-full bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
                     style={{ fontFamily: "Poppins, sans-serif" }}
                   >
@@ -273,7 +273,7 @@ const Login = () => {
                     </Link>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

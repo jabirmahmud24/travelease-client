@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import Loading from "../Loader/Loading";
+import axios from "axios";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -20,7 +22,7 @@ const MyBookings = () => {
   const fetchBookings = async () => {
     try {
       const token = await user.getIdToken();
-      const response = await fetch(
+      const response = await axios.get(
         `http://localhost:3000/myBookings?email=${user.email}`,
         {
           headers: {
@@ -29,8 +31,8 @@ const MyBookings = () => {
         }
       );
 
-      if (response.ok) {
-        const data = await response.json();
+      if (response.status === 200) {
+        const data = response.data;
         setBookings(data);
       } else {
         console.error("Failed to fetch bookings");
@@ -53,20 +55,55 @@ const MyBookings = () => {
       confirmButtonText: "Yes, cancel it!",
       cancelButtonText: "No, keep it",
     }).then(async (result) => {
+      // if (result.isConfirmed) {
+      //   try {
+      //     const token = await user.getIdToken();
+      //     const response = await fetch(
+      //       `http://localhost:3000/bookings/${bookingId}`,
+      //       {
+      //         method: "DELETE",
+      //         headers: {
+      //           Authorization: `Bearer ${token}`,
+      //         },
+      //       }
+      //     );
+
+      //     if (response.ok) {
+      //       Swal.fire(
+      //         "Cancelled!",
+      //         "Your booking has been cancelled.",
+      //         "success"
+      //       );
+      //       // Remove from local state
+      //       setBookings(
+      //         bookings.filter((booking) => booking._id !== bookingId)
+      //       );
+      //     } else {
+      //       Swal.fire("Error!", "Failed to cancel booking.", "error");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error cancelling booking:", error);
+      //     Swal.fire(
+      //       "Error!",
+      //       "An error occurred while cancelling the booking.",
+      //       "error"
+      //     );
+      //   }
+      // }
       if (result.isConfirmed) {
         try {
           const token = await user.getIdToken();
-          const response = await fetch(
+
+          const response = await axios.delete(
             `http://localhost:3000/bookings/${bookingId}`,
             {
-              method: "DELETE",
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             }
           );
 
-          if (response.ok) {
+          if (response.status === 200) {
             Swal.fire(
               "Cancelled!",
               "Your booking has been cancelled.",
@@ -103,11 +140,7 @@ const MyBookings = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (

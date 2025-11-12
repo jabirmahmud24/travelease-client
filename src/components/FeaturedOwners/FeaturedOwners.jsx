@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { FaCar, FaMapMarkerAlt, FaStar, FaUser } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,8 +63,8 @@ const FeaturedOwners = () => {
   const fetchFeaturedOwners = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3000/vehicles");
-      const vehicles = await response.json();
+      const response = await axios.get("http://localhost:3000/vehicles");
+      const vehicles = response.data;
 
       // Group vehicles by owner
       const ownerMap = {};

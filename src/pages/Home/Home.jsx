@@ -3,11 +3,12 @@ import LatestVehicles from "../../components/LatestVehicles/LatestVehicles";
 import Banner from "../../components/Banner/Banner";
 import FeaturedOwners from "../../components/FeaturedOwners/FeaturedOwners";
 import About from "../../components/About/About";
+import axios from "axios";
 
 const Home = () => {
-  const latestVehiclePromise = fetch(
-    "http://localhost:3000/latest-vehicles"
-  ).then((res) => res.json());
+  const latestVehiclePromise = axios
+    .get("http://localhost:3000/latest-vehicles")
+    .then((res) => res.data);
   return (
     <div>
       <Banner></Banner>

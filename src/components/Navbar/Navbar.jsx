@@ -29,36 +29,117 @@ const Navbar = () => {
       {user ? (
         <>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/allVehicles">All Vehicles</NavLink>
+            <NavLink
+              to="/allVehicles"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              All Vehicles
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/addVehicle">Add Vehicle</NavLink>
+            <NavLink
+              to="/addVehicle"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              Add Vehicle
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/myVehicles">My Vehicles</NavLink>
+            <NavLink
+              to="/myVehicles"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              My Vehicles
+            </NavLink>
           </li>
 
           <li>
-            <NavLink to="/myBookings">My Bookings</NavLink>
+            <NavLink
+              to="/myBookings"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              My Bookings
+            </NavLink>
           </li>
         </>
       ) : (
         <>
           {" "}
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              Login
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/register">Register</NavLink>
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              Register
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/allVehicles">All Vehicles</NavLink>
+            <NavLink
+              to="/allVehicles"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-bold rounded-sm bg-[#0ea5e9] text-white"
+                  : "text-black hover:text-blue-800 hover:font-bold hover:bg-blue-200"
+              }
+            >
+              All Vehicles
+            </NavLink>
           </li>
         </>
       )}
@@ -66,7 +147,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm z-10">
+    <div className="navbar bg-slate-100 shadow-sm z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -101,10 +182,10 @@ const Navbar = () => {
             className="text-2xl font-bold"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-600 to-teal-600">
               Travel
             </span>
-            <span className="text-slate-500">Ease</span>
+            <span className="text-slate-700">Ease</span>
           </span>
         </Link>
       </div>
@@ -132,7 +213,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* --------------- */}
         {/* Toggle Button */}
-        <div className="flex-none flex justify-center items-center border-2 px-2 rounded-2xl mr-2">
+        <div className="flex-none flex justify-center items-center border-2 border-black text-black px-2 rounded-2xl mr-2">
           <h4>Theme</h4>
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the theme */}
@@ -164,7 +245,7 @@ const Navbar = () => {
             {/* wrapper uses 'group' so we can show tooltip on hover/focus */}
             <div className="relative group inline-block">
               <img
-                className="rounded-full h-12 w-12 border border-amber-50 cursor-pointer"
+                className="rounded-full h-12 w-12 border border-gray-500 cursor-pointer"
                 src={user.photoURL}
                 alt={user.displayName || "User"}
                 tabIndex={0} // makes it focusable for keyboard users
@@ -182,12 +263,15 @@ const Navbar = () => {
               </div>
             </div>
 
-            <button onClick={handleSignOut} className="btn btn-primary">
+            <button
+              onClick={handleSignOut}
+              className="btn btn-sm bg-blue-600 text-white rounded-2xl border-none"
+            >
               Sign Out
             </button>
           </div>
         ) : (
-          <Link to="/register">Login</Link>
+          ""
         )}
       </div>
     </div>
