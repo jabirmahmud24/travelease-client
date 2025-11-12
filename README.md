@@ -1,16 +1,32 @@
-# React + Vite
+# TravelEase – Vehicle Booking & Trip Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [TravelEase Client](https://your-live-site-url.com)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+TravelEase is a full-stack web application designed for seamless vehicle booking and trip management. Users can explore available vehicles, book them, manage their trips, and keep track of bookings all in one place. The platform is built with modern technologies to provide a fast, responsive, and user-friendly experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **User Authentication:** Sign up, login, and secure access using Firebase authentication.
+- **Vehicle Management:** Explore, add, update, and manage vehicles available for rent.
+- **Booking System:** Book vehicles, view your bookings, and cancel trips with ease.
+- **Search & Filters:** Easily search vehicles and apply filters to find the perfect vehicle for your trip.
+- **Responsive Design:** Mobile-friendly interface with dark and light mode support for better user experience.
+- **Real-time Updates:** Dynamic UI updates for vehicle availability and booking status.
+- **Admin & User Roles:** Admins can manage vehicles and bookings, while users can view and book vehicles.
+
+---
+
+## Technology Used
+
+- **Frontend:** React.js, Tailwind CSS, GSAP for animations, React Router
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Authentication:** Firebase Authentication
+- **API Requests:** Axios for HTTP requests
+- **Notifications & Alerts:** SweetAlert2 (Swal) for success and error messages
