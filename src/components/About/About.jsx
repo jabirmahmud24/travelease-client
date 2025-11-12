@@ -1,166 +1,317 @@
-// src/components/About/About.jsx
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router";
-import { gsap } from "gsap";
+import {
+  FaCheckCircle,
+  FaCar,
+  FaUsers,
+  FaShieldAlt,
+  FaGlobe,
+  FaHeadset,
+  FaAward,
+} from "react-icons/fa";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaPlane, FaCar, FaShieldAlt, FaCalendarAlt } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const statsRef = useRef(null);
   const featuresRef = useRef([]);
-  const teamRef = useRef([]);
-  const heroRef = useRef(null);
 
   useEffect(() => {
-    // Hero animation
-    gsap.from(heroRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top 80%",
-      },
-    });
+    const ctx = gsap.context(() => {
+      // Title animation
+      gsap.fromTo(
+        titleRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
 
-    // Animate feature cards on scroll
-    featuresRef.current.forEach((el, index) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-        },
-        delay: index * 0.2,
-      });
-    });
+      // Content slide in from left
+      gsap.fromTo(
+        contentRef.current,
+        { x: -80, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+          },
+        }
+      );
 
-    // Animate team cards on scroll
-    teamRef.current.forEach((el, index) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-        },
-        delay: index * 0.2,
-      });
-    });
+      // Stats counter animation
+      gsap.fromTo(
+        statsRef.current.children,
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+
+      // Features stagger animation
+      gsap.fromTo(
+        featuresRef.current,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: featuresRef.current[0],
+            start: "top 85%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
+
+  const stats = [
+    { icon: <FaCar />, number: "500+", label: "Vehicles" },
+    { icon: <FaUsers />, number: "10K+", label: "Happy Customers" },
+    { icon: <FaGlobe />, number: "50+", label: "Locations" },
+    { icon: <FaAward />, number: "4.8", label: "Rating" },
+  ];
 
   const features = [
     {
-      icon: <FaPlane size={24} />,
+      icon: <FaCheckCircle className="text-3xl text-[#0ea5e9]" />,
       title: "Easy Booking",
-      desc: "Book vehicles quickly with just a few clicks.",
+      description:
+        "Book your perfect vehicle in just a few clicks with our intuitive platform",
     },
     {
-      icon: <FaShieldAlt size={24} />,
-      title: "Secure Payments",
-      desc: "Safe and secure payment gateway for peace of mind.",
+      icon: <FaShieldAlt className="text-3xl text-[#14b8a6]" />,
+      title: "Secure & Safe",
+      description:
+        "All vehicles are verified and insured for your complete peace of mind",
     },
     {
-      icon: <FaCalendarAlt size={24} />,
-      title: "Trip Management",
-      desc: "Organize and manage your trips efficiently.",
+      icon: <FaHeadset className="text-3xl text-[#0ea5e9]" />,
+      title: "24/7 Support",
+      description:
+        "Our dedicated team is always ready to assist you at any time",
     },
     {
-      icon: <FaCar size={24} />,
-      title: "Verified Vehicles",
-      desc: "Only reliable and verified vehicles for your journey.",
+      icon: <FaGlobe className="text-3xl text-[#14b8a6]" />,
+      title: "Wide Coverage",
+      description:
+        "Access vehicles across multiple cities and locations nationwide",
     },
-  ];
-
-  const team = [
-    { name: "John Doe", role: "Founder & CEO", photo: "/assets/team1.jpg" },
-    { name: "Sarah Lee", role: "Lead Developer", photo: "/assets/team2.jpg" },
-    { name: "Mike Chen", role: "Product Manager", photo: "/assets/team3.jpg" },
-    { name: "Anna Smith", role: "UI/UX Designer", photo: "/assets/team4.jpg" },
   ];
 
   return (
-    <section className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-      {/* Hero Section */}
-      <div
-        ref={heroRef}
-        className="relative bg-blue-500 dark:bg-blue-700 text-white py-24 px-6 text-center rounded-b-3xl"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Discover the World with TravelEase
-        </h1>
-        <p className="max-w-2xl mx-auto text-lg md:text-xl">
-          We make vehicle booking and trip planning seamless, fun, and safe for
-          every traveler.
-        </p>
-      </div>
+    <section ref={sectionRef} className="py-20  relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-30 -z-0"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -z-0"></div>
 
-      {/* Features Section */}
-      <div className="py-16 px-6 md:px-16">
-        <h2 className="text-3xl font-semibold text-center mb-12">
-          Our Features
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              ref={(el) => (featuresRef.current[index] = el)}
-              className="bg-blue-50 dark:bg-gray-800 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="text-blue-500 mb-4">{feature.icon}</div>
-              <h3 className="font-bold text-xl mb-2">{feature.title}</h3>
-              <p>{feature.desc}</p>
-            </div>
-          ))}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div ref={titleRef} className="text-center mb-16">
+          <h2
+            className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            About{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+              TravelEase
+            </span>
+          </h2>
+          <p
+            className="text-lg text-slate-600 max-w-2xl mx-auto"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Your trusted partner for seamless vehicle booking and unforgettable
+            journeys
+          </p>
         </div>
-      </div>
 
-      {/* Team Section */}
-      <div className="py-16 px-6 md:px-16 bg-gray-100 dark:bg-gray-800">
-        <h2 className="text-3xl font-semibold text-center mb-12">
-          Meet Our Team
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {team.map((member, index) => (
-            <div
-              key={index}
-              ref={(el) => (teamRef.current[index] = el)}
-              className="bg-white dark:bg-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300"
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto mb-20">
+          {/* Left Column - Text Content */}
+          <div ref={contentRef} className="space-y-6">
+            <div className="space-y-4">
+              <h3
+                className="text-3xl font-bold text-[#002f6c]"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                Revolutionizing Vehicle Booking
+              </h3>
+              <p
+                className="text-lg text-slate-600 leading-relaxed"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                TravelEase is your one-stop solution for hassle-free vehicle
+                rentals. We connect travelers with quality vehicles and trusted
+                owners, making your journey planning effortless and enjoyable.
+              </p>
+              <p
+                className="text-lg text-slate-600 leading-relaxed"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                Whether you're planning a weekend getaway, a business trip, or a
+                family vacation, we offer a diverse fleet of vehicles to match
+                your needs. From compact cars to spacious vans, luxury sedans to
+                rugged SUVs - find your perfect ride with us.
+              </p>
+            </div>
+
+            {/* Mission Statement */}
+            <div className="bg-linear-to-r from-[#0ea5e9]/10 to-[#14b8a6]/10 border-l-4 border-[#0ea5e9] rounded-xl p-6">
+              <h4
+                className="text-xl font-bold text-[#002f6c] mb-2"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                Our Mission
+              </h4>
+              <p
+                className="text-slate-600"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                To make travel accessible, affordable, and stress-free for
+                everyone by providing a seamless platform that connects
+                travelers with trusted vehicle owners.
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <Link
+              to="/allVehicles"
+              className="inline-block btn btn-lg bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
+              Explore Our Fleet
+            </Link>
+          </div>
+
+          {/* Right Column - Image/Visual */}
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
               <img
-                src={member.photo}
-                alt={member.name}
-                className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                alt="TravelEase vehicles"
+                className="w-full h-[500px] object-cover"
               />
-              <h3 className="font-bold text-xl">{member.name}</h3>
-              <p className="text-blue-500">{member.role}</p>
+              <div className="absolute inset-0 bg-linear-to-t from-[#002f6c]/80 via-transparent to-transparent"></div>
+
+              {/* Floating badge */}
+              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/90 rounded-2xl p-4 shadow-xl">
+                <p
+                  className="text-[#002f6c] font-bold text-lg"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
+                  Trusted by thousands of travelers
+                </p>
+                <p
+                  className="text-slate-600"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Join our community today
+                </p>
+              </div>
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] rounded-full blur-2xl opacity-50 -z-10"></div>
+            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-linear-to-br from-[#14b8a6] to-[#0ea5e9] rounded-full blur-2xl opacity-50 -z-10"></div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div
+          ref={statsRef}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20"
+        >
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 text-center transform hover:-translate-y-1"
+            >
+              <div className="text-4xl text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] mb-3 flex justify-center">
+                {stat.icon}
+              </div>
+              <h4
+                className="text-3xl font-bold text-[#002f6c] mb-1"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                {stat.number}
+              </h4>
+              <p
+                className="text-slate-600 font-medium"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="py-16 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Plan Your Next Trip with Ease
-        </h2>
-        <p className="mb-8 max-w-xl mx-auto">
-          Join TravelEase today and enjoy seamless booking, verified vehicles,
-          and complete trip management at your fingertips.
-        </p>
-        <Link
-          to="/register"
-          className="bg-blue-500 dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
-        >
-          Get Started
-        </Link>
+        {/* Features Grid */}
+        <div className="max-w-6xl mx-auto">
+          <h3
+            className="text-3xl md:text-4xl font-bold text-[#002f6c] text-center mb-12"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
+            Why Choose{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+              Us?
+            </span>
+          </h3>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                ref={(el) => (featuresRef.current[index] = el)}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 text-center transform hover:-translate-y-2 group"
+              >
+                <div className="mb-4 flex justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h4
+                  className="text-xl font-bold text-[#002f6c] mb-3 group-hover:text-[#0ea5e9] transition-colors"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
+                  {feature.title}
+                </h4>
+                <p
+                  className="text-slate-600"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
