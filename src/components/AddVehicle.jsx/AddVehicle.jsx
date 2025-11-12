@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-
+import axios from "axios";
 const AddVehicle = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -27,44 +27,47 @@ const AddVehicle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // add createdAt timestamp
     const payload = {
       ...formData,
       createdAt: new Date().toISOString(),
     };
 
     try {
-      const response = await fetch("http://localhost:3000/vehicles", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      // ✅ Use Axios POST
+      const response = await axios.post(
+        "http://localhost:3000/vehicles",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         Swal.fire({
           icon: "success",
           title: "Vehicle Added",
           text: "Your vehicle has been added successfully!",
         }).then(() => {
-          navigate("/myVehicles"); // redirect to My Vehicles
+          navigate("/myVehicles");
         });
       } else {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: data.message || "Failed to add vehicle.",
+          text: response.data?.message || "Failed to add vehicle.",
         });
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error adding vehicle:", error);
+
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Something went wrong. Please try again.",
+        text:
+          error.response?.data?.message ||
+          "Something went wrong. Please try again.",
       });
     }
   };
@@ -80,6 +83,7 @@ const AddVehicle = () => {
           Vehicle
         </span>
       </h2>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block font-semibold mb-1">Vehicle Name</label>
@@ -100,7 +104,7 @@ const AddVehicle = () => {
             name="owner"
             value={formData.owner}
             readOnly
-            className="w-full border px-3 py-2 rounded "
+            className="w-full border px-3 py-2 rounded"
           />
         </div>
 
@@ -127,6 +131,7 @@ const AddVehicle = () => {
             className="w-full border px-3 py-2 rounded"
           />
         </div>
+
         <div>
           <label className="block font-semibold mb-1">Category</label>
           <input

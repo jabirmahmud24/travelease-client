@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Loading from "../Loader/Loading";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,8 +29,8 @@ const MyVehicles = () => {
   const fetchVehicles = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:3000/vehicles`);
-      const data = await res.json();
+      const res = await axios.get(`http://localhost:3000/vehicles`);
+      const data = await res.data;
       // filter by logged-in user's email
       const myVehicles = data.filter(
         (vehicle) => vehicle.userEmail === user?.email
@@ -74,18 +76,20 @@ const MyVehicles = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/vehicles/${id}`, {
-            method: "DELETE",
-          });
-          const data = await res.json();
-          if (res.ok) {
+          const res = await axios.delete(
+            `http://localhost:3000/vehicles/${id}`
+          );
+          const data = res.data;
+          // console.log(res);
+
+          if (res.status === 200) {
             Swal.fire({
               title: "Deleted!",
               text: data.message || "Vehicle deleted successfully.",
               icon: "success",
               confirmButtonColor: "#0ea5e9",
             });
-            fetchVehicles(); // refresh list
+            fetchVehicles();
           } else {
             Swal.fire({
               title: "Error",
@@ -108,11 +112,7 @@ const MyVehicles = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-linear-to-b from-slate-50 to-white">
-        <span className="loading loading-spinner loading-lg text-[#0ea5e9]"></span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   return (

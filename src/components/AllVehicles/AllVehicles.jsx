@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import gsap from "gsap";
 import Loading from "../Loader/Loading";
+import axios from "axios";
 
 const AllVehicles = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -22,17 +23,20 @@ const AllVehicles = () => {
   const filterBarRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/vehicles")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchVehicles = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/vehicles");
+        const data = res.data; // Axios automatically parses JSON
         setVehicles(data);
         applyFiltersAndSort(data, "default");
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching vehicles:", error);
         setLoading(false);
-      });
+      }
+    };
+
+    fetchVehicles();
   }, []);
 
   useEffect(() => {

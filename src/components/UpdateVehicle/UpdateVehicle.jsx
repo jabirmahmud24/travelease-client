@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
 import { FiEdit } from "react-icons/fi";
+import axios from "axios";
+import Loading from "../Loader/Loading";
 
 const UpdateVehicle = () => {
   const { id } = useParams();
@@ -26,7 +28,7 @@ const UpdateVehicle = () => {
     const updatedVehicle = {
       vehicleName: form.vehicleName.value,
       owner: form.owner.value,
-      categories: form.categories.value, // ✅ fixed
+      categories: form.categories.value,
       pricePerDay: form.pricePerDay.value,
       location: form.location.value,
       availability: form.availability.value,
@@ -35,13 +37,12 @@ const UpdateVehicle = () => {
       userEmail: user?.email,
     };
 
-    fetch(`http://localhost:3000/vehicles/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedVehicle),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    axios
+      .patch(`http://localhost:3000/vehicles/${id}`, updatedVehicle, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((res) => {
+        const data = res.data;
         if (data.modifiedCount > 0) {
           Swal.fire({
             icon: "success",
@@ -69,12 +70,7 @@ const UpdateVehicle = () => {
       });
   };
 
-  if (!vehicle)
-    return (
-      <div className="text-center py-20 text-xl font-semibold">
-        Loading vehicle details...
-      </div>
-    );
+  if (!vehicle) return <Loading></Loading>;
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-6 bg-base-100 shadow-xl rounded-2xl">
