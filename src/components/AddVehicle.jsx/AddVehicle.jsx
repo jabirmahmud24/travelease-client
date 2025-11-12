@@ -71,7 +71,15 @@ const AddVehicle = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-8 rounded-lg shadow-lg mt-8">
-      <h2 className="text-2xl font-bold mb-6">Add New Vehicle</h2>
+      <h2
+        className="text-4xl md:text-5xl font-bold text-[#1868d1] mb-4 text-center"
+        style={{ fontFamily: "Poppins, sans-serif" }}
+      >
+        Add A New{" "}
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+          Vehicle
+        </span>
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block font-semibold mb-1">Vehicle Name</label>
