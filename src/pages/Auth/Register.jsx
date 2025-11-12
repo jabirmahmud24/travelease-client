@@ -96,9 +96,9 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900">
-      <div className="card w-full max-w-sm shrink-0 shadow-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50">
-        <h2 className="font-semibold text-2xl text-center text-white mt-5">
+    <div className="flex justify-center items-center min-h-screen bg-linear-to-b from-slate-50 to-white">
+      <div className="card w-full max-w-sm shrink-0 bg-white shadow-2xl border border-slate-100 ">
+        <h2 className="text-center mt-5 text-3xl font-bold text-[#002f6c] mb-2">
           Register your account
         </h2>
         <form onSubmit={handleRegister} className="card-body">

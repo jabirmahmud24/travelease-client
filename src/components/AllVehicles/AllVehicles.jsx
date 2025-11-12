@@ -119,7 +119,7 @@ const AllVehicles = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <div className="flex justify-center items-center min-h-screen bg-linear-to-b from-slate-50 to-white">
         <span className="loading loading-spinner loading-lg text-[#0ea5e9]"></span>
       </div>
     );
@@ -139,7 +139,7 @@ const AllVehicles = () => {
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             All{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
               Vehicles
             </span>
           </h2>

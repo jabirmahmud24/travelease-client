@@ -19,6 +19,7 @@ import MyVehicles from "./components/MyVehicles/MyVehicles.jsx";
 import AddVehicle from "./components/AddVehicle.jsx/AddVehicle.jsx";
 import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
 import About from "./components/About/About.jsx";
+import Error404 from "./components/Error/Error404.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         Component: About,
+      },
+      {
+        path: "*",
+        Component: Error404,
       },
       {
         path: "myBookings",
