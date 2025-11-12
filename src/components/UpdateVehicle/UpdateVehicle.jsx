@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
+import { FiEdit } from "react-icons/fi";
 
 const UpdateVehicle = () => {
   const { id } = useParams();
@@ -78,13 +79,23 @@ const UpdateVehicle = () => {
   return (
     <div className="max-w-3xl mx-auto mt-10 p-6 bg-base-100 shadow-xl rounded-2xl">
       {/* Vehicle Header */}
+      <h2 className="text-4xl md:text-5xl font-bold text-center text-[#002f6c] dark:text-[#0a68e4] mb-4">
+        Update Your{" "}
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+          Vehicle Data
+        </span>
+      </h2>
       <div className="mb-6 text-center">
         <img
           src={vehicle.coverImage}
           alt={vehicle.vehicleName}
           className="w-64 h-40 object-cover mx-auto rounded-xl"
         />
-        <h2 className="text-2xl font-bold mt-3">{vehicle.vehicleName}</h2>
+        <h2 className="text-2xl font-bold mt-3 my-4">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0ea5e9] to-[#14b8a6]">
+            {vehicle.vehicleName}
+          </span>
+        </h2>
         <p className="text-sm text-gray-500">{vehicle.description}</p>
       </div>
 
@@ -202,8 +213,11 @@ const UpdateVehicle = () => {
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary col-span-2 mt-4">
-          Update Vehicle
+        <button
+          type="submit"
+          className="btn btn-primary col-span-2 mt-4 bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full"
+        >
+          <FiEdit /> Update Vehicle
         </button>
       </form>
     </div>

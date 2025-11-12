@@ -75,8 +75,8 @@ const Banner = () => {
             "url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
         }}
       >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001f3f]/95 via-[#002f6c]/90 to-[#002f6c]/80"></div>
+        {/* linear Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-[#001f3f]/95 via-[#002f6c]/90 to-[#002f6c]/80"></div>
 
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -105,7 +105,7 @@ const Banner = () => {
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Your Journey Starts{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-300">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-teal-300">
                   Here
                 </span>
               </h1>
@@ -125,9 +125,9 @@ const Banner = () => {
               <div ref={buttonsRef} className="flex flex-wrap gap-4">
                 <Link
                   to="/allVehicles"
-                  className="btn btn-lg bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white px-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="btn btn-lg bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white px-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
                 >
-                  Explore Vehicles
+                  Explore All Vehicles
                 </Link>
                 <Link
                   to="/about"
@@ -143,7 +143,7 @@ const Banner = () => {
                 className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8"
               >
                 <div className="flex items-center gap-3 backdrop-blur-sm bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] p-3 rounded-xl">
+                  <div className="bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] p-3 rounded-xl">
                     <FaCar className="text-2xl text-white" />
                   </div>
                   <div>
@@ -153,7 +153,7 @@ const Banner = () => {
                 </div>
 
                 <div className="flex items-center gap-3 backdrop-blur-sm bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="bg-gradient-to-br from-[#14b8a6] to-[#0ea5e9] p-3 rounded-xl">
+                  <div className="bg-linear-to-br from-[#14b8a6] to-[#0ea5e9] p-3 rounded-xl">
                     <FaRoute className="text-2xl text-white" />
                   </div>
                   <div>
@@ -163,7 +163,7 @@ const Banner = () => {
                 </div>
 
                 <div className="flex items-center gap-3 backdrop-blur-sm bg-white/10 rounded-2xl p-4 border border-white/20">
-                  <div className="bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] p-3 rounded-xl">
+                  <div className="bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] p-3 rounded-xl">
                     <FaShieldAlt className="text-2xl text-white" />
                   </div>
                   <div>
@@ -182,7 +182,7 @@ const Banner = () => {
                   alt="Luxury vehicle"
                   className="w-full h-[600px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002f6c]/60 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#002f6c]/60 via-transparent to-transparent"></div>
 
                 {/* Floating Badge */}
                 <div className="absolute bottom-8 left-8 right-8 backdrop-blur-xl bg-white/90 rounded-2xl p-6 shadow-xl">
@@ -201,7 +201,7 @@ const Banner = () => {
                         Top-rated vehicles for every journey
                       </p>
                     </div>
-                    <div className="bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] text-white font-bold text-2xl rounded-xl px-4 py-2">
+                    <div className="bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] text-white font-bold text-2xl rounded-xl px-4 py-2">
                       4.8★
                     </div>
                   </div>
@@ -209,8 +209,8 @@ const Banner = () => {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#0ea5e9] to-[#14b8a6] rounded-full blur-2xl opacity-50 -z-10"></div>
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-[#14b8a6] to-[#0ea5e9] rounded-full blur-2xl opacity-50 -z-10"></div>
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-linear-to-br from-[#0ea5e9] to-[#14b8a6] rounded-full blur-2xl opacity-50 -z-10"></div>
+              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-linear-to-br from-[#14b8a6] to-[#0ea5e9] rounded-full blur-2xl opacity-50 -z-10"></div>
             </div>
           </div>
         </div>

@@ -138,7 +138,7 @@ const About = () => {
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-16">
           <h2
-            className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#1d70dd] mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             About{" "}
@@ -147,7 +147,7 @@ const About = () => {
             </span>
           </h2>
           <p
-            className="text-lg text-slate-600 max-w-2xl mx-auto"
+            className="text-lg text-slate-500 max-w-2xl mx-auto"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Your trusted partner for seamless vehicle booking and unforgettable
@@ -161,13 +161,13 @@ const About = () => {
           <div ref={contentRef} className="space-y-6">
             <div className="space-y-4">
               <h3
-                className="text-3xl font-bold text-[#002f6c]"
+                className="text-3xl font-bold text-[#4b99ff]"
                 style={{ fontFamily: "Poppins, sans-serif" }}
               >
                 Revolutionizing Vehicle Booking
               </h3>
               <p
-                className="text-lg text-slate-600 leading-relaxed"
+                className="text-lg text-slate-500 leading-relaxed"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 TravelEase is your one-stop solution for hassle-free vehicle
@@ -186,7 +186,7 @@ const About = () => {
             </div>
 
             {/* Mission Statement */}
-            <div className="bg-linear-to-r from-[#0ea5e9]/10 to-[#14b8a6]/10 border-l-4 border-[#0ea5e9] rounded-xl p-6">
+            <div className="bg-linear-to-r from-[#0ea5e9]/10 to-[#14b8a6]/10 border-l-4 dark:bg-slate-300 border-[#0ea5e9] rounded-xl p-6">
               <h4
                 className="text-xl font-bold text-[#002f6c] mb-2"
                 style={{ fontFamily: "Poppins, sans-serif" }}

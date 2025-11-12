@@ -18,6 +18,7 @@ import MyBookings from "./components/MyBookings/MyBookings.jsx";
 import MyVehicles from "./components/MyVehicles/MyVehicles.jsx";
 import AddVehicle from "./components/AddVehicle.jsx/AddVehicle.jsx";
 import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
+import About from "./components/About/About.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "allVehicles",
         Component: AllVehicles,
+      },
+      {
+        path: "about",
+        Component: About,
       },
       {
         path: "myBookings",

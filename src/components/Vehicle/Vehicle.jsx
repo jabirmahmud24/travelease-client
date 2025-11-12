@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { FaCar, FaMapMarkerAlt } from "react-icons/fa";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 const Vehicle = ({ vehicle }) => {
   const { _id, categories, coverImage, vehicleName, location } = vehicle;
@@ -12,8 +13,8 @@ const Vehicle = ({ vehicle }) => {
             src={coverImage}
             className="rounded-2xl h-64 w-full object-cover transform group-hover:scale-110 transition-transform duration-700"
           />
-          {/* Gradient overlay on hover */}
-          <div className="absolute inset-4 rounded-2xl bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          {/* linear overlay on hover */}
+          <div className="absolute inset-4 rounded-2xl bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </figure>
         <div className="card-body">
           <h2
@@ -38,9 +39,9 @@ const Vehicle = ({ vehicle }) => {
           <div className="card-actions mt-4">
             <Link
               to={`/vehicleDetails/${_id}`}
-              className="btn w-full bg-gradient-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
+              className="btn w-full bg-linear-to-r from-[#0ea5e9] to-[#14b8a6] hover:from-[#0284c7] hover:to-[#0d9488] border-none text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
             >
-              View Details
+              <MdOutlineRemoveRedEye /> View Details
             </Link>
           </div>
         </div>
