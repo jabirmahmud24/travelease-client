@@ -170,7 +170,7 @@ const MyBookings = () => {
                   />
                   <div className="absolute top-3 left-3">
                     <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      {booking.category}
+                      {booking.categories}
                     </span>
                   </div>
                 </div>

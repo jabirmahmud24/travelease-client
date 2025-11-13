@@ -99,19 +99,24 @@ const Register = () => {
                   "Content-Type": "application/json",
                 },
               })
-              .then((res) => {
+              .then(() => {
                 navigate("/");
+                window.location.reload();
               })
               .catch((err) => {
                 console.error("Database save error:", err);
+
                 navigate("/");
+                window.location.reload();
               });
           })
           .catch((error) => {
             console.error("Profile update error:", error);
             toast.error("Profile update failed");
             setUser(user);
+
             navigate("/");
+            window.location.reload();
           });
       })
       .catch((error) => {
