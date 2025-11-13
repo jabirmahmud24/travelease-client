@@ -1,8 +1,15 @@
 # TravelEase – Vehicle Booking & Trip Management Platform
 
-**Live Site:** [TravelEase Client](https://your-live-site-url.com)
+## Live Web
 
----
+**Live Site:** [TravelEase Client](https://travelease-b12a09.web.app);
+**Live Server:** [TravelEase Server](https://travelease-server.vercel.app/);
+
+## GitHub Repositories
+
+**Client Git Repo:** [TravelEase Client Git](https://github.com/jabirmahmud24/travelease-client);
+
+**Client Server Repo:** [TravelEase Server Git](https://github.com/jabirmahmud24/travelease-server);
 
 ## Overview
 
@@ -30,3 +37,4 @@ TravelEase is a full-stack web application designed for seamless vehicle booking
 - **Authentication:** Firebase Authentication
 - **API Requests:** Axios for HTTP requests
 - **Notifications & Alerts:** SweetAlert2 (Swal) for success and error messages
+- **Time Format:** Date FNS for formating time
