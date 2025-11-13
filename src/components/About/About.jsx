@@ -277,7 +277,7 @@ const About = () => {
         {/* Features Grid */}
         <div className="max-w-6xl mx-auto">
           <h3
-            className="text-3xl md:text-4xl font-bold text-[#002f6c] text-center mb-12"
+            className="text-3xl md:text-4xl font-bold text-[#3280e6] text-center mb-12"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             Why Choose{" "}

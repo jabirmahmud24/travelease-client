@@ -29,7 +29,9 @@ const MyVehicles = () => {
   const fetchVehicles = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:3000/vehicles`);
+      const res = await axios.get(
+        `https://travelease-server.vercel.app/vehicles`
+      );
       const data = await res.data;
       // filter by logged-in user's email
       const myVehicles = data.filter(
@@ -77,7 +79,7 @@ const MyVehicles = () => {
       if (result.isConfirmed) {
         try {
           const res = await axios.delete(
-            `http://localhost:3000/vehicles/${id}`
+            `https://travelease-server.vercel.app/vehicles/${id}`
           );
           const data = res.data;
           // console.log(res);

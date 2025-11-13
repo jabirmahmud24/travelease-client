@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import { formatISO } from "date-fns";
 import axios from "axios";
 const AddVehicle = () => {
   const { user } = useContext(AuthContext);
@@ -27,15 +28,18 @@ const AddVehicle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // const payload = {
+    //   ...formData,
+    //   createdAt: new Date().toISOString(),
+    // };
     const payload = {
       ...formData,
-      createdAt: new Date().toISOString(),
+      createdAt: formatISO(new Date()), // outputs ISO string with local timezone
     };
 
     try {
-      // ✅ Use Axios POST
       const response = await axios.post(
-        "http://localhost:3000/vehicles",
+        "https://travelease-server.vercel.app/vehicles",
         payload,
         {
           headers: {

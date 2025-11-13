@@ -23,7 +23,7 @@ const MyBookings = () => {
     try {
       const token = await user.getIdToken();
       const response = await axios.get(
-        `http://localhost:3000/myBookings?email=${user.email}`,
+        `https://travelease-server.vercel.app/myBookings?email=${user.email}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -55,51 +55,17 @@ const MyBookings = () => {
       confirmButtonText: "Yes, cancel it!",
       cancelButtonText: "No, keep it",
     }).then(async (result) => {
-      // if (result.isConfirmed) {
-      //   try {
-      //     const token = await user.getIdToken();
-      //     const response = await fetch(
-      //       `http://localhost:3000/bookings/${bookingId}`,
-      //       {
-      //         method: "DELETE",
-      //         headers: {
-      //           Authorization: `Bearer ${token}`,
-      //         },
-      //       }
-      //     );
-
-      //     if (response.ok) {
-      //       Swal.fire(
-      //         "Cancelled!",
-      //         "Your booking has been cancelled.",
-      //         "success"
-      //       );
-      //       // Remove from local state
-      //       setBookings(
-      //         bookings.filter((booking) => booking._id !== bookingId)
-      //       );
-      //     } else {
-      //       Swal.fire("Error!", "Failed to cancel booking.", "error");
-      //     }
-      //   } catch (error) {
-      //     console.error("Error cancelling booking:", error);
-      //     Swal.fire(
-      //       "Error!",
-      //       "An error occurred while cancelling the booking.",
-      //       "error"
-      //     );
-      //   }
-      // }
       if (result.isConfirmed) {
         try {
           const token = await user.getIdToken();
 
           const response = await axios.delete(
-            `http://localhost:3000/bookings/${bookingId}`,
+            `https://travelease-server.vercel.app/myBookings/${bookingId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
+              data: {},
             }
           );
 

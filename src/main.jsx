@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
@@ -20,6 +20,7 @@ import AddVehicle from "./components/AddVehicle.jsx/AddVehicle.jsx";
 import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
 import About from "./components/About/About.jsx";
 import Error404 from "./components/Error/Error404.jsx";
+import Loading from "./components/Loader/Loading.jsx";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
       {
         path: "vehicleDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/vehicles/${params.id}`),
+          fetch(`https://travelease-server.vercel.app/vehicles/${params.id}`),
         element: (
           <PrivateRoute>
             <ViewDetails></ViewDetails>
@@ -98,8 +99,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />,
-    </AuthProvider>
+    <Suspense fallback={<Loading></Loading>}>
+      <AuthProvider>
+        <RouterProvider router={router} />,
+      </AuthProvider>
+    </Suspense>
   </StrictMode>
 );

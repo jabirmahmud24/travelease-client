@@ -25,7 +25,9 @@ const AllVehicles = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/vehicles");
+        const res = await axios.get(
+          "https://travelease-server.vercel.app/vehicles"
+        );
         const data = res.data; // Axios automatically parses JSON
         setVehicles(data);
         applyFiltersAndSort(data, "default");
@@ -113,7 +115,7 @@ const AllVehicles = () => {
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-12">
           <h2
-            className="text-4xl md:text-5xl font-bold text-[#002f6c] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#2476e2] mb-4"
             style={{ fontFamily: "Poppins, sans-serif" }}
           >
             All{" "}

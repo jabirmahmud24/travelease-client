@@ -94,7 +94,7 @@ const Register = () => {
             };
 
             axios
-              .post("http://localhost:3000/users", newUser, {
+              .post("https://travelease-server.vercel.app/users", newUser, {
                 headers: {
                   "Content-Type": "application/json",
                 },

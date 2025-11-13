@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Home = () => {
   const latestVehiclePromise = axios
-    .get("http://localhost:3000/latest-vehicles")
+    .get("https://travelease-server.vercel.app/latest-vehicles")
     .then((res) => res.data);
   return (
     <div>

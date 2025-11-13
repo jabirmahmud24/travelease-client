@@ -16,7 +16,9 @@ const UpdateVehicle = () => {
   useEffect(() => {
     const fetchVehicle = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/vehicles/${id}`);
+        const res = await axios.get(
+          `https://travelease-server.vercel.app/vehicles/${id}`
+        );
         setVehicle(res.data); // Axios automatically parses JSON
       } catch (err) {
         console.error("Error loading vehicle:", err);
@@ -44,9 +46,13 @@ const UpdateVehicle = () => {
     };
 
     axios
-      .patch(`http://localhost:3000/vehicles/${id}`, updatedVehicle, {
-        headers: { "Content-Type": "application/json" },
-      })
+      .patch(
+        `https://travelease-server.vercel.app/vehicles/${id}`,
+        updatedVehicle,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
       .then((res) => {
         const data = res.data;
         if (data.modifiedCount > 0) {

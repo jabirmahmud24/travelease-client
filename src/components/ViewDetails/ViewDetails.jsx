@@ -31,7 +31,7 @@ const ViewDetails = () => {
         vehicleId: vehicle._id,
         vehicleName: vehicle.vehicleName,
         owner: vehicle.owner,
-        category: vehicle.category,
+        categories: vehicle.categories,
         pricePerDay: vehicle.pricePerDay,
         location: vehicle.location,
         coverImage: vehicle.coverImage,
@@ -39,7 +39,7 @@ const ViewDetails = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/myBookings",
+        "https://travelease-server.vercel.app/myBookings",
         bookingData,
         {
           headers: {
@@ -175,7 +175,7 @@ const ViewDetails = () => {
             {/* Category Badge */}
             <div className="mb-6">
               <span className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">
-                {vehicle.category}
+                {vehicle.categories}
               </span>
             </div>
 
